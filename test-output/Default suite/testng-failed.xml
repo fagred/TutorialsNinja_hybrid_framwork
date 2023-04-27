@@ -3,15 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.tutorials.qu.testcases.Search_Product_Test">
+      <class name="com.tutorials.qu.testcases.LoginTest">
         <methods>
-          <include name="VerifysearchingwithanexistingProductName"/>
-          <include name="sutup"/>
-          <include name="VerifysearchingwithoutprovidinganyProductName"/>
-          <include name="VerifysearchingwithanonexistingProductName"/>
+          <include name="VerifyloggingintothApplicationusingvalidcredentials"/>
+          <include name="setup"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.tutorials.qu.testcases.Search_Product_Test -->
+      </class> <!-- com.tutorials.qu.testcases.LoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

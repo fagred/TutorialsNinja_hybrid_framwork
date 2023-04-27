@@ -12,6 +12,8 @@ import org.testng.asserts.SoftAssert;
 
 import com.tutorials.qa.base.TestBase;
 import com.tutorialsninja.qa.base.Utilities;
+import com.tutorialsninja.qa.pages.Home_Page;
+import com.tutorialsninja.qa.pages.LoginPage;
 
 
     public class LoginTest  extends TestBase{
@@ -31,9 +33,10 @@ import com.tutorialsninja.qa.base.Utilities;
 		
 	
 		driver = InitializeBrowserAndOpenApplication(prop.getProperty("browserName"));
-        driver.findElement(By.xpath("//span[text() ='My Account']")).click();
-        driver.findElement(By.linkText("Login")).click();   
-  
+		Home_Page home_Page = new Home_Page(driver);
+		home_Page.clickOnMyAccount();
+		home_Page.selectLoginOption();
+		
 	}
 	@AfterMethod
 	public void tearDown () {
@@ -45,8 +48,12 @@ import com.tutorialsninja.qa.base.Utilities;
 	@Test(priority=1,dataProvider="validSredentialsSupplier" )
      public void VerifyloggingintothApplicationusingvalidcredentials(String email, String password) {
 		
-       driver.findElement(By.id("input-email")).sendKeys(email);
-       driver.findElement(By.id("input-password")).sendKeys(password);
+		LoginPage loginPage = new LoginPage(driver);
+		
+		loginPage.enterEmailAddress(email);
+		loginPage.enterPassword(password);
+		 
+ 
        driver.findElement(By.xpath("//input[@value='Login']")).click();
        softassert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
        softassert.assertAll();
